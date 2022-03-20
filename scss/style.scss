@@ -1,0 +1,67 @@
+body {
+    background-image: url("/wwwroot/images/Amsterdam.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.clock {
+    margin-top: 20;
+    margin-left: 40;
+    justify-content: center;
+    display:flex;
+    color: #000000;
+    font-size: 80px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+    letter-spacing: 5px;
+    font-style: italic;
+
+}
+
+.form-select{
+    margin: auto;
+}
+#clockContainer {
+    position:relative;
+    margin: auto;
+    height: 40vw;
+    /*to make the height and width responsive*/
+    width: 40vw;
+    background: url(/wwwroot/images/clock.png) no-repeat;
+    /*setting our background image*/
+    background-size: 100%;
+}
+  
+#hour,
+#minute,
+#second {
+    position: absolute;
+    background: black;
+    border-radius: 10px;
+    transform-origin: bottom;
+}
+  
+#hour {
+    width: 2.3%;
+    height: 18%;
+    top: 32%;
+    left: 48.85%;
+    opacity: 0.8;
+}
+  
+#minute {
+    width: 1.5%;
+    height: 20%;
+    top: 30%;
+    left: 48.9%;
+    opacity: 0.8;
+}
+  
+#second {
+    width: 1%;
+    height: 21%;
+    top: 29%;
+    left: 49.25%;
+    opacity: 0.8;
+}
