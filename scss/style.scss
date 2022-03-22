@@ -7,61 +7,77 @@ body {
 }
 
 .clock {
-    margin-top: 20;
-    margin-left: 40;
+    margin: auto;
     justify-content: center;
     display:flex;
     color: #000000;
-    font-size: 80px;
+    font-size: 60px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     letter-spacing: 5px;
     font-style: italic;
 
 }
-
-.form-select{
-    margin: auto;
+#myCitiesLabel{
+      margin: auto;
+    margin-left: 25%;
+    margin-top: 5%;
 }
+
 #clockContainer {
     position:relative;
     margin: auto;
     height: 40vw;
-    /*to make the height and width responsive*/
+    /* make the height and width responsive*/
     width: 40vw;
+    /*clock background image*/
     background: url(/wwwroot/images/clock.png) no-repeat;
-    /*setting our background image*/
-    background-size: 100%;
+    background-size: 80%;
 }
   
 #hour,
 #minute,
 #second {
     position: absolute;
-    background: black;
+    background: rgb(0, 0, 0);
     border-radius: 10px;
     transform-origin: bottom;
 }
   
-#hour {
-    width: 2.3%;
-    height: 18%;
-    top: 32%;
-    left: 48.85%;
+  #hour {
+    width: 1.8%;
+    height: 15.5%;
+    top: 25%;
+    left: 39%;
     opacity: 0.8;
-}
+}   
   
-#minute {
+   #minute {
     width: 1.5%;
-    height: 20%;
-    top: 30%;
-    left: 48.9%;
+    height: 17.2%;
+    top: 22.9%;
+    left: 39%;
     opacity: 0.8;
-}
+}    
   
-#second {
+    #second {
     width: 1%;
-    height: 21%;
-    top: 29%;
-    left: 49.25%;
+    height: 18.4%;
+    top: 21.3%;
+    left: 39%;
     opacity: 0.8;
+}   
+ 
+#my-selector1{
+    width: 25rem;
+    margin-left: 25%;
+}
+#my-selector2{
+    width: 25rem;
+    margin-left: 25%;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+    margin-left: 25%;
+    margin-top: 15px;
 }
