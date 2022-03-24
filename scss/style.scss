@@ -1,37 +1,28 @@
 body {
-    background-image: url("/wwwroot/images/Amsterdam.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    margin: 0;
-    padding: 0;
+    background-repeat:no-repeat;
+    background-size:cover;
+    margin: 0px;
+    padding: 0px;
 }
 
 .clock {
-    margin: auto;
-    justify-content: center;
-    display:flex;
-    color: #000000;
+    color: #e60000;
     font-size: 60px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
     letter-spacing: 5px;
     font-style: italic;
+}
 
-}
-#myCitiesLabel{
-      margin: auto;
-    margin-left: 25%;
-    margin-top: 5%;
-}
 
 #clockContainer {
     position:relative;
-    margin: auto;
     height: 40vw;
     /* make the height and width responsive*/
     width: 40vw;
     /*clock background image*/
     background: url(/wwwroot/images/clock.png) no-repeat;
     background-size: 80%;
+    margin: auto;
 }
   
 #hour,
@@ -66,18 +57,31 @@ body {
     left: 39%;
     opacity: 0.8;
 }   
- 
-#my-selector1{
-    width: 25rem;
-    margin-left: 25%;
-}
-#my-selector2{
-    width: 25rem;
-    margin-left: 25%;
-}
+
 .btn{
     display: flex;
+    background-color: #637464 !important ;
+    color: #ffffff !important;
     justify-content: center;
     margin-left: 25%;
     margin-top: 15px;
+}
+.analogClock{
+    margin-right: 20%;
+    margin-bottom: 0%;
+}
+.digitalClock{
+    margin-top: 30%;
+    margin-bottom: 0%;
+}
+
+.myCities{
+    margin-top: 40%;
+    color: #ff0000;
+    width:fit-content ;
+}
+.allCities{
+    margin-top: 40%;
+    color: #ff0000;
+    width:fit-content ; 
 }

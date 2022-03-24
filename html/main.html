@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html>
-
     <head>
         <link rel="stylesheet" href="/wwwroot/scss/style.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
 <body>
-
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="analogClock" id="clockContainer">
-          <div id="hour"></div>
-          <div id="minute"></div>
-          <div id="second"></div> 
-        </div>
-      </div>
-      <div class="col">
-        <div class="digitalClock">
-          <div id="MyClockDisplay" class="clock" onload="showTime()">
-         </div>
-       </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col">
-        <div class="myCities">
-          <label for="my-selector1" class="form-label" id="myCitiesLabel"><h1>My cities</h1></label>
-           <select id = "my-selector1" class="form-select">
-             <option value="Stockholm" selected>
-               Stockholm
-            </option>
+  <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 col-sm-12">
+            <div class="analogClock" id="clockContainer">
+              <div id="hour"></div>
+              <div id="minute"></div>
+              <div id="second"></div> 
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+            <div class="digitalClock">
+              <div id="MyClockDisplay" class="clock" onload="showTime()">
+             </div>
+           </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <div class="myCities">
+              <label for="my-selector1" class="form-label" id="myCitiesLabel"><h1>My cities</h1></label>
+               <select id = "my-selector1" class="form-select">
+                 <option value="Stockholm" selected>
+                   Stockholm
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <div class="allCities">
+              <label for="my-selector2" class="form-label" id="allCitiesLabel"><h1>All cities</h1></label>
+          <select id="my-selector2" class="form-select" size="6" multiple>
           </select>
+          <button type="submit" class="btn btn-success" onclick="addCity()">Add to favorit</button>
         </div>
-      </div>
-      <div class="col">
-        <div class="allCities">
-          <label for="my-selector2" class="form-label" id="allCitiesLabel"><h1>All cities</h1></label>
-      <select id="my-selector2" class="form-select" size="6" multiple>
-      </select>
-      <button type="submit" class="btn btn-success" onclick="addCity()">Add to favorit</button>
-    </div>
-      </div>
-    </div>
+          </div>
+        </div>
   </div>
  
   <!--

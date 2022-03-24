@@ -14,6 +14,7 @@ let  notSorted =[];
 const openAPI = "http://worldtimeapi.org/api/timezone/";
 let countries =[];
 
+
 async function getCities(url){
     const response = await fetch(url);
      data = await response.json();
@@ -22,6 +23,8 @@ async function getCities(url){
          let item1 = element.substring(element.indexOf('/')+1);
          let found = continent.includes(item);
          let found1 = countries.includes(item1);
+         console.log(item);
+         console.log(item1);
          if(!found1){
             countries.push(item1) ;
          }
@@ -88,8 +91,6 @@ async function getCities(url){
         el.value = opt;
         select1.appendChild(el);
        }
-       console.log("array long");
-       console.log(countries.length);
     }
     
   async  function  getTimeFromCity(){
@@ -97,7 +98,7 @@ async function getCities(url){
         let value = select.options[select.selectedIndex].text; */
         let select1 = document.getElementById("my-selector1");
         let value1 = select1.options[select1.selectedIndex].text;
-        document.body.style.backgroundImage = "url(/wwwroot/images/"+value1+".jpg)";
+       document.body.style.backgroundImage = "url(/wwwroot/images/"+value1+".jpg)";
         let date = new Date();
         if(America.includes(value1)){
            date =  await fetchDateFromCity("America",value1.toString());
@@ -128,15 +129,31 @@ async function getCities(url){
     async function addCity(){
       let select = document.getElementById("my-selector2");
       let value = select.options[select.selectedIndex].text;
-      console.log(value);
+      let isFound =await checkOptionsValues(value);
+      if (isFound) {
+        alert("This city has been already added to your list");
+        return;
+      }
       var select1 = document.getElementById("my-selector1");
       var opt = value;
       var el = document.createElement("option");
       el.textContent = opt;
       el.value = opt;
       select1.appendChild(el);
-
     }
+
+   async function checkOptionsValues(element){
+     let isFound ;
+      Array.from(document.getElementById("my-selector1").options).forEach(function(option_element) {
+       let option_value = option_element.value;
+       if(element===option_value){
+         isFound = true;
+       }
+       else isFound=false;
+      });
+    return isFound;
+    }
+
  async function fetchDateFromCity(continent,city){
     const response = await fetch(openAPI+continent+"/"+city);
     let cityInfo = await response.json();
