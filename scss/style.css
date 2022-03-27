@@ -1,0 +1,99 @@
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0px;
+  padding: 0px;
+}
+
+.clock {
+  color: #e60000;
+  font-size: 60px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  letter-spacing: 5px;
+  font-style: italic;
+}
+
+#clockContainer {
+  position: relative;
+  height: 40vw;
+  /* make the height and width responsive*/
+  width: 40vw;
+  /*clock background image*/
+  background: url(/wwwroot/images/clock.png) no-repeat;
+  background-size: 80%;
+  margin: auto;
+}
+
+#hour,
+#minute,
+#second {
+  position: absolute;
+  background: black;
+  border-radius: 10px;
+  -webkit-transform-origin: bottom;
+          transform-origin: bottom;
+}
+
+#hour {
+  width: 1.8%;
+  height: 15.5%;
+  top: 25%;
+  left: 39%;
+  opacity: 0.8;
+}
+
+#minute {
+  width: 1.5%;
+  height: 17.2%;
+  top: 22.9%;
+  left: 39%;
+  opacity: 0.8;
+}
+
+#second {
+  width: 1%;
+  height: 18.4%;
+  top: 21.3%;
+  left: 39%;
+  opacity: 0.8;
+}
+
+.btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #637464 !important;
+  color: #ffffff !important;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-left: 25%;
+  margin-top: 15px;
+}
+
+.analogClock {
+  margin-right: 20%;
+  margin-bottom: 0%;
+}
+
+.digitalClock {
+  margin-top: 30%;
+  margin-bottom: 0%;
+}
+
+.myCities {
+  margin-top: 40%;
+  color: #ff0000;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.allCities {
+  margin-top: 40%;
+  color: #ff0000;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+/*# sourceMappingURL=style.css.map */

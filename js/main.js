@@ -15,6 +15,7 @@ const openAPI = "http://worldtimeapi.org/api/timezone/";
 let countries =[];
 
 
+// Get all cities from open API and sort them into different arrays by continent and countries : 
 async function getCities(url){
     const response = await fetch(url);
      data = await response.json();
@@ -66,23 +67,18 @@ async function getCities(url){
                 notSorted.push(item1);
                 break;
           }
-         
-     });
-    
-     geterateListOfCities(countries);
-    
+     }); 
+      // Call geterateListOfCities after calling get cities method that are not connected with event listener and is needed each page reload .
+      geterateListOfCities(countries);
     }
 
-    function geterateListOfCities(countries){ 
+    // Call getCities method that are not connected with event listener and is needed each page reload .
+    getCities(openAPI);
+
+    // Render all cities inside all cities list
+    async function geterateListOfCities(countries){ 
+      // sort the cities by name ASC
       countries.sort();
-     /*  var select = document.getElementById("my-selector");
-       for (index of countries){
-        var opt = index;
-        var el = document.createElement("option");
-        el.textContent = opt;
-        el.value = opt;
-        select.appendChild(el);
-       } */
        var select1 = document.getElementById("my-selector2");
        for (index of countries){
         var opt = index;
@@ -92,10 +88,9 @@ async function getCities(url){
         select1.appendChild(el);
        }
     }
-    
+   
+    //Get time from city selected from my cities select box and fetch data using fetchDateFromCity method
   async  function  getTimeFromCity(){
-       /*  let select = document.getElementById("my-selector");
-        let value = select.options[select.selectedIndex].text; */
         let select1 = document.getElementById("my-selector1");
         let value1 = select1.options[select1.selectedIndex].text;
        document.body.style.backgroundImage = "url(/wwwroot/images/"+value1+".jpg)";
@@ -125,8 +120,32 @@ async function getCities(url){
         }
          return date ;
     }
-   
+
+    //fetch time from rest api : return date object 
+    async function fetchDateFromCity(continent,city){
+      const response = await fetch(openAPI+continent+"/"+city);
+      let cityInfo = await response.json();
+      let values = Object.values(cityInfo);
+      let dateTimeFromCity = values[2];
+      let year = dateTimeFromCity.substring(0,4);
+      let month = dateTimeFromCity.substring(5,7);
+      let day = dateTimeFromCity.substring(8,10);
+      let hour = dateTimeFromCity.substring(11,13);
+      let minute = dateTimeFromCity.substring(14,16);
+      let second =  dateTimeFromCity.substring(17,19);
+      const finalDate = 
+      new Date(parseInt(year)
+      ,parseInt(month)
+      ,parseInt(day),parseInt(hour)
+      ,parseInt(minute),parseInt(second)
+      );
+      return finalDate;
+   }
+
+      // add city from all cities to Local storage :D 
     async function addCity(){
+      let counter = localStorage.length;
+      counter++;
       let select = document.getElementById("my-selector2");
       let value = select.options[select.selectedIndex].text;
       let isFound =await checkOptionsValues(value);
@@ -134,14 +153,44 @@ async function getCities(url){
         alert("This city has been already added to your list");
         return;
       }
-      var select1 = document.getElementById("my-selector1");
       var opt = value;
-      var el = document.createElement("option");
-      el.textContent = opt;
-      el.value = opt;
-      select1.appendChild(el);
+      console.log(localStorage.setItem(counter,opt));
+      localStorage.setItem(counter,opt);
+      location.reload();
     }
 
+     //Read my cities saved in local storage 
+    async function readCity(){
+      for (let i = 1 ; i<=localStorage.length;i++){
+        var select1 = document.getElementById("my-selector1");
+        var el = document.createElement("option");
+        if(localStorage.getItem(i)!=null){
+            el.textContent = localStorage.getItem(i);
+            el.value = i;
+            select1.appendChild(el);
+        }
+      }
+    }
+
+    // Call readCity method that are not connected with event listener and is needed each page reload .
+  readCity();
+
+      //Clear local storage
+    async function clearLocalStorage(){
+      localStorage.clear();
+      location.reload();
+    }
+
+     // Remove one item from localStorage
+    async function deleteItem(){
+      let select = document.getElementById("my-selector1");
+      let value = select.options[select.selectedIndex].value;
+      console.log(value);
+      localStorage.removeItem(value);
+      location.reload();
+    }
+    
+    // Check if city has been already added
    async function checkOptionsValues(element){
      let isFound ;
       Array.from(document.getElementById("my-selector1").options).forEach(function(option_element) {
@@ -154,29 +203,6 @@ async function getCities(url){
     return isFound;
     }
 
- async function fetchDateFromCity(continent,city){
-    const response = await fetch(openAPI+continent+"/"+city);
-    let cityInfo = await response.json();
-    let values = Object.values(cityInfo);
-    let dateTimeFromCity = values[2];
-    let year = dateTimeFromCity.substring(0,4);
-    let month = dateTimeFromCity.substring(5,7);
-    let day = dateTimeFromCity.substring(8,10);
-    let hour = dateTimeFromCity.substring(11,13);
-    let minute = dateTimeFromCity.substring(14,16);
-    let second =  dateTimeFromCity.substring(17,19);
-    const finalDate = 
-    new Date(parseInt(year)
-    ,parseInt(month)
-    ,parseInt(day),parseInt(hour)
-    ,parseInt(minute),parseInt(second)
-    );
-    return finalDate;
- }
 
- getCities(openAPI);
-
-
-
-
-
+  
+ 
